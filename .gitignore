@@ -32,5 +32,6 @@
 *.app
 
 # User added files
-testing.cpp
+temp/
 *-app
+builds/
