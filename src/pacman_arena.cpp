@@ -11,19 +11,19 @@ PacmanArena::PacmanArena(){
 void PacmanArena::readBoard(){
 	std::ifstream file;
 	file.open("data.txt");
-	for (int i=0;i<HEIGHT;i++){
-		for (int j=0;j<WIDTH;j++){
-			file >> original_board[i][j]; 
+	for (int i=0;i<this->HEIGHT;i++){
+		for (int j=0;j<this->WIDTH;j++){
+			file >> this->original_board[i][j]; 
 		}
 	}
-	std::memcpy(board, original_board, HEIGHT*WIDTH*sizeof(char));
+	std::memcpy(this->board, this->original_board, this->HEIGHT*this->WIDTH*sizeof(char));
 }
 
 
 void PacmanArena::showBoard(){
-	for(int i = 0; i < HEIGHT; i++) {
-		for (int j=0;j<WIDTH;j++){
-			std::cout << board[i][j];
+	for(int i = 0; i < this->HEIGHT; i++) {
+		for (int j=0;j<this->WIDTH;j++){
+			std::cout << this->board[i][j];
 		}
 		std::cout << "\n";
 	}
@@ -32,9 +32,9 @@ void PacmanArena::showBoard(){
 
 void PacmanArena::showOriginalBoard(){
 	std::cout << "---------ORIGINAL BOARD---------\n";
-	for(int i = 0; i < HEIGHT; i++) {
-		for (int j=0;j<WIDTH;j++){
-			std::cout << original_board[i][j];
+	for(int i = 0; i < this->HEIGHT; i++) {
+		for (int j=0;j<this->WIDTH;j++){
+			std::cout << this->original_board[i][j];
 		}
 		std::cout << "\n";
 	}

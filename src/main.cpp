@@ -26,14 +26,12 @@ int main(){
     PacmanArena arena;
     Character pacman(arena);
     
-    arena.showOriginalBoard();
+    arena.showBoard();
     getInput(userInput, xd, yd);
     
     while (userInput!='c'){
         pacman.moveCharacter(xd, yd, arena);
 	    arena.showBoard();
-        cout << "xd= " << xd << " yd= " << yd << 
-            " | pacman x: " << pacman.coords.x << " y: " << pacman.coords.y << endl;
         getInput(userInput, xd, yd);
     }
     return 0;
