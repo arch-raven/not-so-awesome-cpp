@@ -7,6 +7,18 @@ PacmanArena::PacmanArena()
 {
 	this->readBoard();
 	this->readStaticBoard();
+	this->pellet_count = 0;
+	for (int i = 0; i < this->HEIGHT; i++)
+	{
+		for (int j = 0; j < this->WIDTH; j++)
+		{
+			if (this->board[i][j] == Icons::pellet || this->board[i][j] == Icons::power_pellet)
+			{
+				this->pellet_count++;
+			}
+		}
+	}
+	std::cout << this->pellet_count << " Pellets found\n";
 }
 
 void PacmanArena::readBoard()
@@ -63,7 +75,7 @@ void PacmanArena::showBoard()
 	{
 		for (int j = 0; j < this->WIDTH; j++)
 		{
-			std::cout << this->board[i][j];
+			std::cout << (this->board[i][j] == Icons::empty ? ' ' : this->board[i][j]);
 		}
 		std::cout << "\n";
 	}

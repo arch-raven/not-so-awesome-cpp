@@ -34,20 +34,17 @@ void getInput(char &userInput, int &xd, int &yd)
 
 int main()
 {
-    char userInput;
+    char userInput = 'j';
     int xd, yd;
 
     PacmanArena arena;
     Pacman pacman(arena);
 
-    arena.showBoard();
-    getInput(userInput, xd, yd);
-
-    while (userInput != 'c')
+    while (arena.pellet_count && userInput != 'c')
     {
-        pacman.moveCharacter(xd, yd, arena);
         arena.showBoard();
         getInput(userInput, xd, yd);
+        pacman.moveCharacter(xd, yd, arena);
     }
     return 0;
 }

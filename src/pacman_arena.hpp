@@ -8,6 +8,7 @@ public:
 	static const int HEIGHT = 21, WIDTH = 21;
 	char static_board[HEIGHT][WIDTH];
 	char board[HEIGHT][WIDTH];
+	int pellet_count;
 
 	PacmanArena();
 	void readBoard();

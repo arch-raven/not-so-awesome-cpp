@@ -15,12 +15,12 @@ class Icons
 {
 public:
 	static const char pacman = '@';
-	static const char coin = '.';
-	static const char bonus = '$';
 	static const char ghost = '!';
 	static const char wall = '#';
-	static const char rand = 'G';
+	static const char pellet = '.';
+	static const char power_pellet = '$';
 	static const char empty = '-';
+	static const char rand = 'G';
 
 	static bool isIconStatic(const char icon)
 	{
