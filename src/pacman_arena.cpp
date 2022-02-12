@@ -4,25 +4,66 @@
 #include <cstring>
 // class for pacman Arena layout, elements{ ie player, ghosts, walls, boosters, droppables, etc}
 
-PacmanArena::PacmanArena(){
+PacmanArena::PacmanArena()
+{
 	this->readBoard();
+	this->readStaticBoard();
 }
 
-void PacmanArena::readBoard(){
+void PacmanArena::readBoard()
+{
 	std::ifstream file;
 	file.open("data.txt");
-	for (int i=0;i<this->HEIGHT;i++){
-		for (int j=0;j<this->WIDTH;j++){
-			file >> this->original_board[i][j]; 
+	for (int i = 0; i < this->HEIGHT; i++)
+	{
+		for (int j = 0; j < this->WIDTH; j++)
+		{
+			file >> this->board[i][j];
 		}
 	}
-	std::memcpy(this->board, this->original_board, this->HEIGHT*this->WIDTH*sizeof(char));
 }
 
+void PacmanArena::readStaticBoard()
+{
+	for (int i = 0; i < this->HEIGHT; i++)
+	{
+		for (int j = 0; j < this->WIDTH; j++)
+		{
+			if (Icons::isIconStatic(this->board[i][j]))
+			{
+				this->static_board[i][j] = this->board[i][j];
+			}
+			else
+			{
+				this->static_board[i][j] = Icons::empty;
+			}
+		}
+	}
+}
 
-void PacmanArena::showBoard(){
-	for(int i = 0; i < this->HEIGHT; i++) {
-		for (int j=0;j<this->WIDTH;j++){
+Coords PacmanArena::getCharacterPosition(const char icon)
+{
+	for (int i = 0; i < this->HEIGHT; i++)
+	{
+		for (int j = 0; j < this->WIDTH; j++)
+		{
+			if (this->board[i][j] == icon)
+			{
+				std::cout << "Found Icon: " << icon << " at position: " << i << " " << j << std::endl;
+				return {i, j};
+			}
+		}
+	}
+	std::cout << "Icon: " << icon << " not found" << std::endl;
+	return {-1, -1};
+}
+
+void PacmanArena::showBoard()
+{
+	for (int i = 0; i < this->HEIGHT; i++)
+	{
+		for (int j = 0; j < this->WIDTH; j++)
+		{
 			std::cout << this->board[i][j];
 		}
 		std::cout << "\n";
@@ -30,11 +71,14 @@ void PacmanArena::showBoard(){
 	std::cout << "\n";
 }
 
-void PacmanArena::showOriginalBoard(){
+void PacmanArena::showstaticBoard()
+{
 	std::cout << "---------ORIGINAL BOARD---------\n";
-	for(int i = 0; i < this->HEIGHT; i++) {
-		for (int j=0;j<this->WIDTH;j++){
-			std::cout << this->original_board[i][j];
+	for (int i = 0; i < this->HEIGHT; i++)
+	{
+		for (int j = 0; j < this->WIDTH; j++)
+		{
+			std::cout << this->static_board[i][j];
 		}
 		std::cout << "\n";
 	}
