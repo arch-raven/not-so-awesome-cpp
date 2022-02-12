@@ -4,9 +4,7 @@
 
 Character::Character(PacmanArena &arena)
 {
-    Coords pos = arena.getCharacterPosition(this->icon);
-    this->coords.x = pos.x;
-    this->coords.y = pos.y;
+    this->coords = arena.getCharacterPosition(this->icon);
 }
 
 void Character::moveCharacter(int xd, int yd, PacmanArena &arena)

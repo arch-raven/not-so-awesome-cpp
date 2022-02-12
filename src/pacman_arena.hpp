@@ -1,6 +1,5 @@
 #pragma once
 #include "globals.hpp"
-// class for pacman Arena layout, elements{ ie player, ghosts, walls, boosters, droppables, etc}
 
 class PacmanArena
 {

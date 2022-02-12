@@ -2,7 +2,6 @@
 #include <fstream>
 #include <iostream>
 #include <cstring>
-// class for pacman Arena layout, elements{ ie player, ghosts, walls, boosters, droppables, etc}
 
 PacmanArena::PacmanArena()
 {

@@ -38,7 +38,7 @@ int main()
     int xd, yd;
 
     PacmanArena arena;
-    Character pacman(arena);
+    Pacman pacman(arena);
 
     arena.showBoard();
     getInput(userInput, xd, yd);
