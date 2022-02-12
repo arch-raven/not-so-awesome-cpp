@@ -50,7 +50,7 @@ Coords PacmanArena::getCharacterPosition(const char icon)
 			if (this->board[i][j] == icon)
 			{
 				std::cout << "Found Icon: " << icon << " at position: " << i << " " << j << std::endl;
-				return {i, j};
+				return {j, i};
 			}
 		}
 	}
