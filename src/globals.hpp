@@ -30,3 +30,8 @@ class Icons {
         }
     }
 };
+
+namespace Constants {
+    const unsigned int pallete_points = 20;
+    const unsigned int power_pallete_points = 200;
+} // namespace Constants

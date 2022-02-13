@@ -26,4 +26,23 @@ void Pacman::moveCharacter(int xd, int yd, PacmanArena &arena) {
     arena.board[y][x] = arena.static_board[y][x];
     arena.board[yd][xd] = this->icon;
     this->coords = {xd, yd};
+    this->eatPallete(xd, yd, arena);
+}
+
+void Pacman::eatPallete(int x, int y, PacmanArena &arena) {
+    // eats pellete if present
+    switch (arena.static_board[y][x]) {
+    case Icons::pellet:
+        this->score += Constants::pallete_points;
+        arena.static_board[y][x] = Icons::empty;
+        arena.pellet_count--;
+        return;
+    case Icons::power_pellet:
+        this->score += Constants::power_pallete_points;
+        arena.static_board[y][x] = Icons::empty;
+        arena.pellet_count--;
+        return;
+    default:
+        return;
+    }
 }

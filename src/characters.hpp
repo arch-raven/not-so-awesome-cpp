@@ -16,6 +16,8 @@ class Pacman {
     struct Coords coords;
     struct Coords direction = {0, 0};
     bool alive = true, invincible = false;
+    unsigned int score = 0;
     Pacman(PacmanArena &arena);
     void moveCharacter(int xd, int yd, PacmanArena &arena);
+    void eatPallete(int x, int y, PacmanArena &arena);
 };
