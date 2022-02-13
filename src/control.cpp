@@ -34,8 +34,9 @@ void control::getInput(int &userInput, int &xd, int &yd) {
     clear();
 }
 
-void control::exitPlayer() {
+void control::exitPlayer(int score) {
     addstr("\n\n      GAME OVER      \n\n");
+    printw("      SCORE: %d\n", score);
     addstr("\n\nPress any key to Exit! \n");
     getch();
     clear();
