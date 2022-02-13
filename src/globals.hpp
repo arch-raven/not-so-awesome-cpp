@@ -18,17 +18,6 @@ class Icons {
     static const char power_pellet = '$';
     static const char empty = '-';
     static const char rand = 'G';
-
-    static bool isIconStatic(const char icon) {
-        switch (icon) {
-        case Icons::pacman:
-            return false;
-        case Icons::ghost:
-            return false;
-        default:
-            return true;
-        }
-    }
 };
 
 namespace Constants {

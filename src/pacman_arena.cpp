@@ -30,19 +30,16 @@ void PacmanArena::readBoard() {
 void PacmanArena::readStaticBoard() {
     for (int i = 0; i < this->HEIGHT; i++) {
         for (int j = 0; j < this->WIDTH; j++) {
-            if (Icons::isIconStatic(this->board[i][j])) {
-                this->static_board[i][j] = this->board[i][j];
-            } else {
-                this->static_board[i][j] = Icons::empty;
-            }
+            this->static_board[i][j] = this->board[i][j];
         }
     }
 }
 
-Coords PacmanArena::getCharacterPosition(const char icon) {
+Coords PacmanArena::getCharacterInitialPosition(const char icon) {
     for (int i = 0; i < this->HEIGHT; i++) {
         for (int j = 0; j < this->WIDTH; j++) {
-            if (this->board[i][j] == icon) {
+            if (this->static_board[i][j] == icon) {
+                this->static_board[i][j] = Icons::empty;
                 printw("[DEBUG] Found Icon: %c  at position: (%d, %d)\n", icon,
                        i, j);
                 return {j, i};

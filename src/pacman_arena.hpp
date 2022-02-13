@@ -14,5 +14,5 @@ class PacmanArena {
     void readStaticBoard();
     void showBoard();
     void showstaticBoard();
-    Coords getCharacterPosition(const char icon);
+    Coords getCharacterInitialPosition(const char icon);
 };

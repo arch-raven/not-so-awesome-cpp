@@ -1,6 +1,7 @@
 #include "characters.hpp"
 #include "control.hpp"
 #include "globals.hpp"
+#include "overlord.hpp"
 #include "pacman_arena.hpp"
 #include <ncurses.h>
 
@@ -17,13 +18,14 @@ int main() {
 
     PacmanArena arena;
     Pacman pacman(arena);
-    Ghost ghost(arena);
+    Overlord overlord(arena);
+
     control::greetPlayer();
     while (arena.pellet_count && userInput != 'c' && pacman.alive) {
         arena.showBoard();
         control::getInput(userInput, xd, yd);
         pacman.moveCharacter(xd, yd, arena);
-        ghost.moveCharacter(arena);
+        overlord.work(arena);
     }
     control::exitPlayer(pacman.score);
     endwin();

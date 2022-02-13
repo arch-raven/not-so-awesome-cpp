@@ -3,7 +3,7 @@
 // #include <ncurses.h>
 
 Pacman::Pacman(PacmanArena &arena) {
-    this->coords = arena.getCharacterPosition(this->icon);
+    this->coords = arena.getCharacterInitialPosition(this->icon);
 }
 
 void Pacman::moveCharacter(int xd, int yd, PacmanArena &arena) {
@@ -49,7 +49,7 @@ void Pacman::eatPallete(int x, int y, PacmanArena &arena) {
 }
 
 Ghost::Ghost(PacmanArena &arena) {
-    this->coords = arena.getCharacterPosition(this->icon);
+    this->coords = arena.getCharacterInitialPosition(this->icon);
 }
 
 void Ghost::moveCharacter(PacmanArena &arena) {
