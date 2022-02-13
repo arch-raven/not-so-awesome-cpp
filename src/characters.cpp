@@ -1,22 +1,25 @@
-#include "globals.hpp"
 #include "characters.hpp"
+#include "globals.hpp"
 #include <iostream>
 
-Pacman::Pacman(PacmanArena &arena)
-{
+Pacman::Pacman(PacmanArena &arena) {
     this->coords = arena.getCharacterPosition(this->icon);
 }
 
-void Pacman::moveCharacter(int xd, int yd, PacmanArena &arena)
-{
-    auto x = this->coords.x, y = this->coords.y;
-    xd = (xd + x + arena.WIDTH) % arena.WIDTH; // teleportation magic
-    yd = yd + y;                               // cant teleport vertically since no vertcal portals
+void Pacman::moveCharacter(int xd, int yd, PacmanArena &arena) {
+    // update direction of where pacman is headed
+    if (xd == 0 && yd == 0) {
+        xd = this->direction.x, yd = this->direction.y;
+    } else {
+        this->direction = {xd, yd};
+    }
 
-    if (
-        (xd == x && yd == y) ||               // No change
-        (arena.board[yd][xd] == Icons::wall)) // hit a wall, can't move in this direction
-    {
+    int x = this->coords.x, y = this->coords.y;
+    xd = (xd + x + arena.WIDTH) % arena.WIDTH; // teleportation magic
+    yd = yd + y; // cant teleport vertically since no vertcal portals
+
+    // hit a wall, can't move in this direction
+    if (arena.board[yd][xd] == Icons::wall) {
         return;
     }
 

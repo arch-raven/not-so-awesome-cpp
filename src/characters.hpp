@@ -2,20 +2,19 @@
 #include "globals.hpp"
 #include "pacman_arena.hpp"
 
-class Ghost
-{
-public:
+class Ghost {
+  public:
     char icon = Icons::ghost;
     struct Coords coords;
     Ghost(PacmanArena &arena);
     void moveCharacter(int xd, int yd, PacmanArena &arena);
 };
 
-class Pacman
-{
-public:
+class Pacman {
+  public:
     char icon = Icons::pacman;
     struct Coords coords;
+    struct Coords direction;
     Pacman(PacmanArena &arena);
     void moveCharacter(int xd, int yd, PacmanArena &arena);
 };

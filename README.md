@@ -3,7 +3,7 @@
 ## TODO
 
 - [ ] Basic SMFL GUI
-- [ ] pacman movements
+- [x] pacman movements
 - [ ] Ghost movements
 - [ ] Collisions/Collectibles Checking
 - [ ] Advanced Ghost Behaviour Modes [youtube](https://youtu.be/ataGotQ7ir8) | [blog](https://gameinternals.com/understanding-pac-man-ghost-behavior)
