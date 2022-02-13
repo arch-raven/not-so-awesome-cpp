@@ -1,7 +1,7 @@
 #pragma once
+#include "arena.hpp"
 #include "characters.hpp"
 #include "globals.hpp"
-#include "pacman_arena.hpp"
 
 class Overlord {
   public:

@@ -1,8 +1,8 @@
+#include "arena.hpp"
 #include "characters.hpp"
 #include "control.hpp"
 #include "globals.hpp"
 #include "overlord.hpp"
-#include "pacman_arena.hpp"
 #include <ncurses.h>
 
 using namespace std;

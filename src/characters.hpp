@@ -1,6 +1,6 @@
 #pragma once
+#include "arena.hpp"
 #include "globals.hpp"
-#include "pacman_arena.hpp"
 
 class Ghost {
   public:

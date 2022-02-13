@@ -1,4 +1,4 @@
-#include "pacman_arena.hpp"
+#include "arena.hpp"
 #include <fstream>
 #include <ncurses.h>
 
