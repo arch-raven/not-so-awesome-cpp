@@ -4,5 +4,6 @@
 namespace control {
 void getInput(int &userInput, int &xd, int &yd);
 void greetPlayer();
+void exitPlayer();
 
 } // namespace control

@@ -33,3 +33,10 @@ void control::getInput(int &userInput, int &xd, int &yd) {
     }
     clear();
 }
+
+void control::exitPlayer() {
+    addstr("\n\n      GAME OVER      \n\n");
+    addstr("\n\nPress any key to Exit! \n");
+    getch();
+    clear();
+}

@@ -24,6 +24,7 @@ int main() {
         control::getInput(userInput, xd, yd);
         pacman.moveCharacter(xd, yd, arena);
     }
+    control::exitPlayer();
     endwin();
     return 0;
 }
