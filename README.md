@@ -4,7 +4,10 @@
 
 - [ ] Basic SMFL GUI
 - [x] pacman movements
+- [ ] pacman eat pellets & score count
 - [ ] Ghost movements
+  - [ ] Dumb Ghost: Always Take Left, always!
+  - [ ] Target some cell
 - [ ] Collisions/Collectibles Checking
 - [ ] Advanced Ghost Behaviour Modes [youtube](https://youtu.be/ataGotQ7ir8) | [blog](https://gameinternals.com/understanding-pac-man-ghost-behavior)
     - Chase

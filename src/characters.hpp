@@ -15,6 +15,7 @@ class Pacman {
     char icon = Icons::pacman;
     struct Coords coords;
     struct Coords direction;
+    bool alive = true, invincible = false;
     Pacman(PacmanArena &arena);
     void moveCharacter(int xd, int yd, PacmanArena &arena);
 };

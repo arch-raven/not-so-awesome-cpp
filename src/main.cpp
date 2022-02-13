@@ -12,7 +12,7 @@ int main() {
     PacmanArena arena;
     Pacman pacman(arena);
 
-    while (arena.pellet_count && userInput != 'c') {
+    while (arena.pellet_count && userInput != 'c' && pacman.alive) {
         arena.showBoard();
         control::getInput(userInput, xd, yd);
         pacman.moveCharacter(xd, yd, arena);
