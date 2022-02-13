@@ -1,5 +1,6 @@
 #include "characters.hpp"
 #include "globals.hpp"
+// #include <ncurses.h>
 
 Pacman::Pacman(PacmanArena &arena) {
     this->coords = arena.getCharacterPosition(this->icon);
@@ -44,5 +45,28 @@ void Pacman::eatPallete(int x, int y, PacmanArena &arena) {
         return;
     default:
         return;
+    }
+}
+
+Ghost::Ghost(PacmanArena &arena) {
+    this->coords = arena.getCharacterPosition(this->icon);
+}
+
+void Ghost::moveCharacter(PacmanArena &arena) {
+    // printw("[DEBUG] Current direction: %d\n", this->direction_id);
+    int x = this->coords.x, y = this->coords.y;
+    for (int i = 0; i > -4; i--) {
+        auto direction =
+            Constants::directions[(this->direction_id + i + 1) % 4];
+        if (arena.board[y + direction.y][x + direction.x] != Icons::wall) {
+            arena.board[y][x] = arena.static_board[y][x];
+            y += direction.y;
+            x += direction.x;
+            arena.board[y][x] = this->icon;
+            this->coords = {x, y};
+            this->direction_id = (this->direction_id + i + 1) % 4;
+            // printw("[DEBUG] Decision direction: %d\n", this->direction_id);
+            return;
+        }
     }
 }

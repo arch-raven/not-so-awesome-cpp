@@ -6,8 +6,9 @@ class Ghost {
   public:
     const char icon = Icons::ghost;
     struct Coords coords;
+    unsigned int direction_id = 0;
     Ghost(PacmanArena &arena);
-    void moveCharacter(int xd, int yd, PacmanArena &arena);
+    void moveCharacter(PacmanArena &arena);
 };
 
 class Pacman {
