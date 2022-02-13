@@ -57,6 +57,7 @@ void PacmanArena::showBoard() {
     for (int i = 0; i < this->HEIGHT; i++) {
         for (int j = 0; j < this->WIDTH; j++) {
             addch(this->board[i][j] == Icons::empty ? ' ' : this->board[i][j]);
+            addch(' ');
         }
         addch('\n');
     }
@@ -68,6 +69,7 @@ void PacmanArena::showstaticBoard() {
     for (int i = 0; i < this->HEIGHT; i++) {
         for (int j = 0; j < this->WIDTH; j++) {
             addch(this->static_board[i][j]);
+            addch(' ');
         }
         addch('\n');
     }
