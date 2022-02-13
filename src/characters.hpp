@@ -4,7 +4,7 @@
 
 class Ghost {
   public:
-    char icon = Icons::ghost;
+    const char icon = Icons::ghost;
     struct Coords coords;
     Ghost(PacmanArena &arena);
     void moveCharacter(int xd, int yd, PacmanArena &arena);
@@ -12,9 +12,9 @@ class Ghost {
 
 class Pacman {
   public:
-    char icon = Icons::pacman;
+    const char icon = Icons::pacman;
     struct Coords coords;
-    struct Coords direction;
+    struct Coords direction = {0, 0};
     bool alive = true, invincible = false;
     Pacman(PacmanArena &arena);
     void moveCharacter(int xd, int yd, PacmanArena &arena);

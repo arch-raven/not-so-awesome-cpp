@@ -1,7 +1,6 @@
 #include "pacman_arena.hpp"
-#include <cstring>
 #include <fstream>
-#include <iostream>
+#include <ncurses.h>
 
 PacmanArena::PacmanArena() {
     this->readBoard();
@@ -15,7 +14,7 @@ PacmanArena::PacmanArena() {
             }
         }
     }
-    std::cout << this->pellet_count << " Pellets found\n";
+    printw("[DEBUG] %d  Pellets found\n", this->pellet_count);
 }
 
 void PacmanArena::readBoard() {
@@ -44,35 +43,32 @@ Coords PacmanArena::getCharacterPosition(const char icon) {
     for (int i = 0; i < this->HEIGHT; i++) {
         for (int j = 0; j < this->WIDTH; j++) {
             if (this->board[i][j] == icon) {
-                std::cout << "Found Icon: " << icon << " at position: " << i
-                          << " " << j << std::endl;
+                printw("[DEBUG] Found Icon: %c  at position: (%d, %d)\n", icon,
+                       i, j);
                 return {j, i};
             }
         }
     }
-    std::cout << "Icon: " << icon << " not found" << std::endl;
+    printw("[DEBUG:FATAL] Icon Not Found: %c\n", icon);
     return {-1, -1};
 }
 
 void PacmanArena::showBoard() {
     for (int i = 0; i < this->HEIGHT; i++) {
         for (int j = 0; j < this->WIDTH; j++) {
-            std::cout << (this->board[i][j] == Icons::empty
-                              ? ' '
-                              : this->board[i][j]);
+            addch(this->board[i][j] == Icons::empty ? ' ' : this->board[i][j]);
         }
-        std::cout << "\n";
+        addch('\n');
     }
-    std::cout << "\n";
+    refresh();
 }
 
 void PacmanArena::showstaticBoard() {
-    std::cout << "---------ORIGINAL BOARD---------\n";
+    addstr("---------ORIGINAL BOARD---------\n");
     for (int i = 0; i < this->HEIGHT; i++) {
         for (int j = 0; j < this->WIDTH; j++) {
-            std::cout << this->static_board[i][j];
+            addch(this->static_board[i][j]);
         }
-        std::cout << "\n";
+        addch('\n');
     }
-    std::cout << "\n";
 }

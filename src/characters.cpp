@@ -1,13 +1,13 @@
 #include "characters.hpp"
 #include "globals.hpp"
-#include <iostream>
 
 Pacman::Pacman(PacmanArena &arena) {
     this->coords = arena.getCharacterPosition(this->icon);
 }
 
 void Pacman::moveCharacter(int xd, int yd, PacmanArena &arena) {
-    // update direction of where pacman is headed
+    // Continue in previous direction if no new input
+    // Else update direction of where pacman is headed
     if (xd == 0 && yd == 0) {
         xd = this->direction.x, yd = this->direction.y;
     } else {
