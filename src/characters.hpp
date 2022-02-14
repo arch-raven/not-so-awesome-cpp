@@ -2,6 +2,14 @@
 #include "arena.hpp"
 #include "globals.hpp"
 
+class Overlord {
+  public:
+    const int team_size = 4;
+    Ghost *team[4];
+    Overlord(PacmanArena &arena);
+    void work(PacmanArena &arena);
+};
+
 class Ghost {
   public:
     const char icon = Icons::ghost;
