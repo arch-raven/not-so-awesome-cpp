@@ -1,5 +1,6 @@
 #include "characters.hpp"
 #include "globals.hpp"
+#include <algorithm>
 // #include <ncurses.h>
 
 Pacman::Pacman(PacmanArena &arena) {
@@ -55,16 +56,17 @@ Ghost::Ghost(PacmanArena &arena) {
 void Ghost::moveCharacter(PacmanArena &arena) {
     // printw("[DEBUG] Current direction: %d\n", this->direction_id);
     int x = this->coords.x, y = this->coords.y;
-    for (int i = 0; i > -4; i--) {
+    std::random_shuffle(this->direction_order, this->direction_order + 3);
+    for (int rand_dir : this->direction_order) {
         auto direction =
-            Constants::directions[(this->direction_id + i + 1) % 4];
+            Constants::directions[(this->direction_id + rand_dir) % 4];
         if (arena.board[y + direction.y][x + direction.x] != Icons::wall) {
             arena.board[y][x] = arena.static_board[y][x];
             y += direction.y;
             x += direction.x;
             arena.board[y][x] = this->icon;
             this->coords = {x, y};
-            this->direction_id = (this->direction_id + i + 1) % 4;
+            this->direction_id = (this->direction_id + rand_dir) % 4;
             // printw("[DEBUG] Decision direction: %d\n", this->direction_id);
             return;
         }

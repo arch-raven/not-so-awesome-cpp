@@ -6,7 +6,7 @@
 - [x] pacman movements
 - [x] pacman eat pellets & score count
 - [ ] Ghost movements
-  - [x] Dumb Ghost: Always Take Right, always!
+  - [x] Random Ghost: Take a random turn at intersections
   - [ ] Target some cell
 - [ ] Collisions/Collectibles Checking
 - [ ] Advanced Ghost Behaviour Modes [youtube](https://youtu.be/ataGotQ7ir8) | [blog](https://gameinternals.com/understanding-pac-man-ghost-behavior)
