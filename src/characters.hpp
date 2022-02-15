@@ -29,5 +29,6 @@ class Overlord {
     const int team_size = 4;
     Ghost *team[4];
     Overlord(PacmanArena &arena);
-    void work(PacmanArena &arena);
+    void work(PacmanArena &arena, Pacman &pacman);
+    void checkForHeadonCollision(PacmanArena &arena, Pacman &pacman);
 };

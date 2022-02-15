@@ -1,7 +1,7 @@
 #include "characters.hpp"
 #include "globals.hpp"
 #include <algorithm>
-// #include <ncurses.h>
+#include <ncurses.h>
 
 Pacman::Pacman(PacmanArena &arena) {
     this->coords = arena.getCharacterInitialPosition(this->icon);
@@ -25,7 +25,7 @@ void Pacman::moveCharacter(int xd, int yd, PacmanArena &arena) {
         return;
     }
 
-    arena.board[y][x] = arena.static_board[y][x];
+    arena.board[y][x] = Icons::empty; // pacman leaves nothing behind
     arena.board[yd][xd] = this->icon;
     this->coords = {xd, yd};
     this->eatPallete(xd, yd, arena);
@@ -79,8 +79,24 @@ Overlord::Overlord(PacmanArena &arena) {
     }
 }
 
-void Overlord::work(PacmanArena &arena) {
+void Overlord::work(PacmanArena &arena, Pacman &pacman) {
     for (int i = 0; i < this->team_size; i++) {
         this->team[i]->moveCharacter(arena);
+        // None Head-on Collision Check
+        if (this->team[i]->coords == pacman.coords) {
+            pacman.alive = false;
+        }
+    }
+}
+
+void Overlord::checkForHeadonCollision(PacmanArena &arena, Pacman &pacman) {
+    for (auto ghost : this->team) {
+        if (ghost->coords == pacman.coords) {
+            auto ghost_dirn =
+                Constants::directions[(ghost->direction_id + 2) % 4];
+            if (ghost_dirn == pacman.direction) {
+                pacman.alive = false;
+            }
+        }
     }
 }

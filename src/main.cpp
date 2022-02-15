@@ -4,8 +4,6 @@
 #include "globals.hpp"
 #include <ncurses.h>
 
-using namespace std;
-
 int main() {
     int userInput = 'j';
     int xd = 0, yd = 0;
@@ -24,7 +22,8 @@ int main() {
         arena.showBoard();
         control::getInput(userInput, xd, yd);
         pacman.moveCharacter(xd, yd, arena);
-        overlord.work(arena);
+        overlord.checkForHeadonCollision(arena, pacman);
+        overlord.work(arena, pacman);
     }
     control::exitPlayer(pacman.score);
     endwin();

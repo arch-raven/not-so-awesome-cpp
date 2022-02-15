@@ -1,5 +1,5 @@
 #pragma once
-#include "globals.hpp"
+// #include "globals.hpp"
 
 namespace control {
     void getInput(int &userInput, int &xd, int &yd);
