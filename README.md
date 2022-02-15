@@ -9,7 +9,7 @@
   - [x] Random Ghost: Take a random turn at intersections
   - [ ] Target some cell
 - [x] Collisions Checking
-- [ ] Invincible Mode
+- [x] Invincible Mode
 - [ ] Advanced Ghost Behaviour Modes [youtube](https://youtu.be/ataGotQ7ir8) | [blog](https://gameinternals.com/understanding-pac-man-ghost-behavior)
     - Chase
     - Scatter

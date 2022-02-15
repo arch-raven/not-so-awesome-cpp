@@ -22,7 +22,6 @@ int main() {
         arena.showBoard();
         control::getInput(userInput, xd, yd);
         pacman.moveCharacter(xd, yd, arena);
-        overlord.checkForHeadonCollision(arena, pacman);
         overlord.work(arena, pacman);
     }
     control::exitPlayer(pacman.score);

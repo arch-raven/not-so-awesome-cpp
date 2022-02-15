@@ -17,7 +17,9 @@ class Pacman {
     const char icon = Icons::pacman;
     struct Coords coords;
     struct Coords direction = {0, 0};
-    bool alive = true, invincible = false;
+    bool alive = true;
+    int invincibility_timer = 0;
+
     unsigned int score = 0;
     Pacman(PacmanArena &arena);
     void moveCharacter(int xd, int yd, PacmanArena &arena);
@@ -27,8 +29,10 @@ class Pacman {
 class Overlord {
   public:
     const int team_size = 4;
+    bool frightened_mode = false;
     Ghost *team[4];
     Overlord(PacmanArena &arena);
     void work(PacmanArena &arena, Pacman &pacman);
     void checkForHeadonCollision(PacmanArena &arena, Pacman &pacman);
+    void updateGhostMode(Pacman &pacman);
 };

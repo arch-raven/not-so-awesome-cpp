@@ -23,6 +23,7 @@ class Icons {
 namespace Constants {
     const unsigned int pallete_points = 20;
     const unsigned int power_pallete_points = 200;
+    const unsigned int frightened_mode_timer = 10;
     const Coords directions[4] = {
         {-1, 0},
         {0, -1},

@@ -41,6 +41,7 @@ void Pacman::eatPallete(int x, int y, PacmanArena &arena) {
         return;
     case Icons::power_pellet:
         this->score += Constants::power_pallete_points;
+        this->invincibility_timer += Constants::frightened_mode_timer;
         arena.static_board[y][x] = Icons::empty;
         arena.pellet_count--;
         return;
@@ -80,11 +81,16 @@ Overlord::Overlord(PacmanArena &arena) {
 }
 
 void Overlord::work(PacmanArena &arena, Pacman &pacman) {
+    this->updateGhostMode(pacman);
+    this->checkForHeadonCollision(arena, pacman);
+
     for (int i = 0; i < this->team_size; i++) {
         this->team[i]->moveCharacter(arena);
         // None Head-on Collision Check
         if (this->team[i]->coords == pacman.coords) {
-            pacman.alive = false;
+            if (!this->frightened_mode) {
+                pacman.alive = false;
+            }
         }
     }
 }
@@ -95,8 +101,19 @@ void Overlord::checkForHeadonCollision(PacmanArena &arena, Pacman &pacman) {
             auto ghost_dirn =
                 Constants::directions[(ghost->direction_id + 2) % 4];
             if (ghost_dirn == pacman.direction) {
-                pacman.alive = false;
+                if (!this->frightened_mode) {
+                    pacman.alive = false;
+                }
             }
         }
+    }
+}
+
+void Overlord::updateGhostMode(Pacman &pacman) {
+    if (pacman.invincibility_timer > 0) {
+        this->frightened_mode = true;
+        pacman.invincibility_timer--;
+    } else {
+        this->frightened_mode = false;
     }
 }
