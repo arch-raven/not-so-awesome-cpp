@@ -2,7 +2,7 @@
 
 ## TODO
 
-- [ ] Basic SMFL GUI
+- [ ] Basic SMFL GUI (:construction: WIP branch `sfml`)
 - [x] pacman movements
 - [x] pacman eat pellets & score count
 - [ ] Ghost movements
@@ -28,6 +28,8 @@
 ## Build & Run
 
 ```bash
+# Build
 g++ -std=c++17 -o pacman-app src/*.cpp -lncurses
+# Run
 ./pacman-app  
 ```
